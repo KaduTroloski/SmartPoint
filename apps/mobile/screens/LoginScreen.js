@@ -5,17 +5,18 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import HomeScreen from './HomeScreen';
 
 export default function LoginScreen({ navigation }) {
 
   function entrar() {
-    navigation.replace('Drawer');
+    navigation.replace('Home');
   }
 
   return (
     <View style={styles.container}>
 
-      <Text style={styles.title}>Bem-vinda!</Text>
+      <Text style={styles.title}>Bem-vindo!</Text>
 
       <TextInput
         placeholder="Usuário"

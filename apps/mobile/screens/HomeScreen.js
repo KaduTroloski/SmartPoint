@@ -6,16 +6,13 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default function LoginScreen({ navigation }) {
+export default function HomeScreen({ navigation }) {
 
-  function entrar() {
-    navigation.replace('Drawer');
-  }
 
   return (
     <View style={styles.container}>
 
-      <Text style={styles.title}>Bem-vinda!</Text>
+      <Text style={styles.title}>Feliz por ter devolta</Text>
 
       <TextInput
         placeholder="Usuário"
@@ -27,13 +24,6 @@ export default function LoginScreen({ navigation }) {
         secureTextEntry
         style={styles.input}
       />
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={entrar}
-      >
-        <Text style={styles.buttonText}>Entrar</Text>
-      </TouchableOpacity>
 
     </View>
   );
