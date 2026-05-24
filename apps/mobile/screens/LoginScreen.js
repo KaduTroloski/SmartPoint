@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+
 import {
     StyleSheet,
     KeyboardAvoidingView,
     Platform,
     Image,
+    ScrollView,
     View,
 } from 'react-native';
 
@@ -11,14 +13,17 @@ import {
     TextInput,
     Button,
     Text,
-    useTheme,
     Surface,
     TouchableRipple,
 } from 'react-native-paper';
 
-export default function LoginScreen() {
-    const theme = useTheme();
+import FormLabel from '../components/FormLabel';
+import FormInput from '../components/FormInput';
+import SubmitButton from '../components/SubmitButton';
 
+import { COLORS } from '../constants/colors';
+
+export default function LoginScreen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -31,117 +36,91 @@ export default function LoginScreen() {
 
     return (
         <KeyboardAvoidingView
-            style={styles.container}
-            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+            style={{ flex: 1 }}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
-                {/* Logo */}
-                <View style={styles.logoContainer}>
+            <ScrollView
+                contentContainerStyle={{ flexGrow: 1 }}
+                keyboardShouldPersistTaps="handled"
+            >
+                <View style={styles.container}>
                     <Image
                         source={require('../assets/img/logo.png')}
                         style={styles.logo}
-                        resizeMode="contain"
-                    />
-                </View>
-
-                {/* Título */}
-                <Text
-                    variant="headlineLarge"
-                    style={[
-                        styles.title,
-                        { color: theme.colors.primary },
-                    ]}
-                >
-                    Smart Point
-                </Text>
-
-                <Text
-                    variant="bodyLarge"
-                    style={styles.subtitle}
-                >
-                    Sistema de Ponto de Vendas
-                </Text>
-
-                {/* Formulário */}
-                <View style={styles.form}>
-                    <Text
-                        variant="labelLarge"
-                        style={styles.label}
-                    >
-                        E-mail
-                    </Text>
-
-                    <TextInput
-                        mode="outlined"
-                        placeholder="seu@email.com"
-                        value={email}
-                        onChangeText={setEmail}
-                        style={styles.input}
-                        left={<TextInput.Icon icon="email-outline" />}
                     />
 
                     <Text
-                        variant="labelLarge"
-                        style={styles.label}
+                        variant="headlineLarge"
+                        style={[
+                            styles.title,
+                            { color: COLORS.primary },
+                        ]}
                     >
-                        Senha
+                        Smart Point
                     </Text>
 
-                    <TextInput
-                        mode="outlined"
-                        placeholder="••••••••"
-                        secureTextEntry
-                        value={password}
-                        onChangeText={setPassword}
-                        style={styles.input}
-                        left={<TextInput.Icon icon="lock-outline" />}
-                    />
-
-                    <Button
-                        mode="contained"
-                        onPress={handleLogin}
-                        style={styles.button}
-                        contentStyle={styles.buttonContent}
+                    <Text
+                        variant="bodyLarge"
+                        style={styles.subtitle}
                     >
-                        Entrar
-                    </Button>
+                        Sistema de Ponto de Vendas
+                    </Text>
 
-                    <TouchableRipple
-                        onPress={() => {}}
-                        borderless
-                        style={styles.registerContainer}
-                    >
-                        <Text style={styles.register}>
-                            Ainda não tem uma conta? Registre-se!
-                        </Text>
-                    </TouchableRipple>
+                    <Surface style={styles.form}>
+                        <FormLabel>E-mail</FormLabel>
+
+
+                        <FormInput
+                            placeholder="seu@email.com"
+                            value={email}
+                            onChangeText={setEmail}
+                            icon="email-outline"
+                        />
+
+                        <FormLabel>Senha</FormLabel>
+
+
+                        <FormInput
+                            placeholder="••••••••"
+                            secureTextEntry
+                            value={password}
+                            onChangeText={setPassword}
+                            icon="lock-outline"
+                        />
+
+                        <SubmitButton onPress={handleLogin}>
+                            Entrar
+                        </SubmitButton>
+
+                        <TouchableRipple
+                            onPress={() => { }}
+                            borderless
+                            style={styles.registerContainer}
+                        >
+                            <Text style={styles.register}>
+                                Ainda não tem uma conta? Registre-se!
+                            </Text>
+                        </TouchableRipple>
+                    </Surface>
                 </View>
+            </ScrollView>
         </KeyboardAvoidingView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1,
         justifyContent: 'center',
-        padding: 24,
-        backgroundColor: '#F3F4F6',
-    },
-
-    card: {
-        borderRadius: 24,
-        padding: 28,
-        backgroundColor: '#FFFFFF',
-    },
-
-    logoContainer: {
         alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 16,
+        padding: 24,
+        backgroundColor: COLORS.background,
     },
 
     logo: {
         width: 90,
         height: 90,
+        marginBottom: 16,
     },
 
     title: {
@@ -151,13 +130,16 @@ const styles = StyleSheet.create({
 
     subtitle: {
         textAlign: 'center',
-        color: '#666',
+        color: COLORS.textSecondary,
         marginTop: 8,
         marginBottom: 36,
     },
 
     form: {
         width: '100%',
+        paddingVertical: 16,
+        paddingHorizontal: 14,
+        borderRadius: 20,
     },
 
     label: {
@@ -186,7 +168,7 @@ const styles = StyleSheet.create({
 
     register: {
         textAlign: 'center',
-        color: '#3F43C6',
+        color: COLORS.primary,
         fontWeight: 'bold',
         paddingVertical: 8,
     },
