@@ -15,24 +15,66 @@ import {
     Text,
     Surface,
     TouchableRipple,
+    Snackbar
 } from 'react-native-paper';
 
 import FormLabel from '../components/FormLabel';
 import FormInput from '../components/FormInput';
 import SubmitButton from '../components/SubmitButton';
+import PasswordInput from '../components/PasswordInput'
 
 import { COLORS } from '../constants/colors';
 
-export default function LoginScreen() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+import { useForm, Controller } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { loginSchema } from '../validations/loginSchema';
 
-    const handleLogin = () => {
-        console.log({
-            email,
-            password,
-        });
+import { mockedUsers } from '../mocks/users'; // Importando mockados (temporário)
+import { useAuth } from '../context/AuthContext';
+
+export default function LoginScreen({ navigation }) {
+    const [visible, setVisible] = useState(false);  // Controla a visibilidade do Snackbar
+    const { users } = useAuth();
+
+    const handleLogin = async (data) => {
+
+        const user = users.find(
+            (user) =>
+                user.email === data.email
+        );
+
+        if (!user) {
+            setVisible(true);
+            return;
+        }
+
+        const passwordMatch =
+            await bcrypt.compare(
+                data.password,
+                user.password
+            );
+
+        if (!passwordMatch) {
+            setVisible(true);
+            return;
+        }
+
+        navigation.navigate('Home');
     };
+
+    const {
+        control,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+    } = useForm({
+        resolver: zodResolver(loginSchema),
+
+        defaultValues: {
+            email: '',
+            password: '',
+        },
+    });
 
     return (
         <KeyboardAvoidingView
@@ -70,30 +112,44 @@ export default function LoginScreen() {
                         <FormLabel>E-mail</FormLabel>
 
 
-                        <FormInput
-                            placeholder="seu@email.com"
-                            value={email}
-                            onChangeText={setEmail}
-                            icon="email-outline"
+                        <Controller
+                            control={control}
+                            name="email"
+                            render={({ field: { onChange, value } }) => (
+                                <FormInput
+                                    label="E-mail"
+                                    icon="email-outline"
+                                    value={value}
+                                    onChangeText={onChange}
+                                    error={!!errors.email}
+                                    errorMessage={errors.email?.message}
+                                />
+                            )}
                         />
 
                         <FormLabel>Senha</FormLabel>
 
 
-                        <FormInput
-                            placeholder="••••••••"
-                            secureTextEntry
-                            value={password}
-                            onChangeText={setPassword}
-                            icon="lock-outline"
+                        <Controller
+                            control={control}
+                            name="password"
+                            render={({ field: { onChange, value } }) => (
+                                <PasswordInput
+                                    label="Senha"
+                                    value={value}
+                                    onChangeText={onChange}
+                                    error={!!errors.password}
+                                    errorMessage={errors.password?.message}
+                                />
+                            )}
                         />
 
-                        <SubmitButton onPress={handleLogin}>
+                        <SubmitButton onPress={handleSubmit(handleLogin)}>
                             Entrar
                         </SubmitButton>
 
                         <TouchableRipple
-                            onPress={() => { }}
+                            onPress={() => { navigation.navigate('Register') }}
                             borderless
                             style={styles.registerContainer}
                         >
@@ -104,6 +160,13 @@ export default function LoginScreen() {
                     </Surface>
                 </View>
             </ScrollView>
+            <Snackbar
+                visible={visible}
+                onDismiss={() => setVisible(false)}
+                duration={3000}
+            >
+                Credenciais inválidas
+            </Snackbar>
         </KeyboardAvoidingView>
     );
 }

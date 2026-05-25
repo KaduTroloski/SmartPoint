@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { StyleSheet } from 'react-native';
 
 import { Button } from 'react-native-paper';
@@ -11,7 +12,7 @@ export default function SubmitButton({
         <Button
             mode="contained"
             style={styles.button}
-            contentStyle={styles.buttonContent}
+            contentStyle={styles.content}
             {...props}
         >
             {children}
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
     },
 
-    buttonContent: {
+    content: {
         height: 54,
     },
 });
