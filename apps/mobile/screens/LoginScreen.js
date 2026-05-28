@@ -14,7 +14,6 @@ import {
     Button,
     Text,
     Surface,
-    TouchableRipple,
     Snackbar
 } from 'react-native-paper';
 
@@ -147,16 +146,6 @@ export default function LoginScreen({ navigation }) {
                         <SubmitButton onPress={handleSubmit(handleLogin)}>
                             Entrar
                         </SubmitButton>
-
-                        <TouchableRipple
-                            onPress={() => { navigation.navigate('Register') }}
-                            borderless
-                            style={styles.registerContainer}
-                        >
-                            <Text style={styles.register}>
-                                Ainda não tem uma conta? Registre-se!
-                            </Text>
-                        </TouchableRipple>
                     </Surface>
                 </View>
             </ScrollView>
@@ -222,17 +211,5 @@ const styles = StyleSheet.create({
 
     buttonContent: {
         height: 54,
-    },
-
-    registerContainer: {
-        marginTop: 24,
-        borderRadius: 8,
-    },
-
-    register: {
-        textAlign: 'center',
-        color: COLORS.primary,
-        fontWeight: 'bold',
-        paddingVertical: 8,
     },
 });
