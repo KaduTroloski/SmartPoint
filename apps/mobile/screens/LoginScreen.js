@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
     StyleSheet,
@@ -32,13 +32,23 @@ import { loginSchema } from '../validations/loginSchema';
 import { mockedUsers } from '../mocks/users'; // Importando mockados (temporário)
 import { useAuth } from '../context/AuthContext';
 
+import * as Crypto from 'expo-crypto';
+
 export default function LoginScreen({ navigation }) {
     const [visible, setVisible] = useState(false);  // Controla a visibilidade do Snackbar
     const { users } = useAuth();
 
+    // Gerar o hash de forma assíncrona e segura
+    const hashPassword = async (password) => {
+        return await Crypto.digestStringAsync(
+            Crypto.CryptoDigestAlgorithm.SHA256,
+            password
+        );
+    };
+
     const handleLogin = async (data) => {
 
-        const user = users.find(
+        const user = mockedUsers.find(
             (user) =>
                 user.email === data.email
         );
@@ -48,13 +58,11 @@ export default function LoginScreen({ navigation }) {
             return;
         }
 
-        const passwordMatch =
-            await bcrypt.compare(
-                data.password,
-                user.password
-            );
+        //Criptografa a senha digitada para comparar com o hash salvo
+        const hashedPasswordInput = await hashPassword(data.password);
 
-        if (!passwordMatch) {
+        // No mock, as senhas devem estar salvas em formato SHA-256
+        if (user.password !== hashedPasswordInput) {
             setVisible(true);
             return;
         }
@@ -74,6 +82,19 @@ export default function LoginScreen({ navigation }) {
             password: '',
         },
     });
+
+  // Para gerar o hash de teste no console e copiar para o mock (temporário)
+/*   useEffect(() => {
+    async function generateHash() {
+      try {
+        const hash = await hashPassword('Admin@123');
+        console.log('Use este hash no seu arquivo de mocks:', hash);
+      } catch (error) {
+        console.error('Erro ao gerar hash:', error);
+      }
+    }
+    generateHash();
+  }, []); */
 
     return (
         <KeyboardAvoidingView

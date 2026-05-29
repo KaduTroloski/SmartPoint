@@ -5,8 +5,6 @@ import React, {
     useState,
 } from 'react';
 
-import { initialUsers } from '../mocks/initialUsers';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AuthContext = createContext();
@@ -46,8 +44,6 @@ export function AuthProvider({ children }) {
 
                 return;
             }
-
-            setUsers(initialUsers);
 
         } catch (error) {
 
