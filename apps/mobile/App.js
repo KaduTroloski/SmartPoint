@@ -44,7 +44,7 @@ function ProfileScreen() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator useLegacyImplementation={false}>
+      <Drawer.Navigator>
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Profile" component={ProfileScreen} />
       </Drawer.Navigator>
