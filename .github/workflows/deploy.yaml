@@ -1,0 +1,29 @@
+name: Deploy API to Firebase
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Instalar dependências da API
+        working-directory: ./apps/api 
+        run: npm install
+
+      - name: Fazer o Deploy para o Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only functions
+        env:
+          GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
