@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "smartpoint-21e6a-service"
+location: "us-east4"
+schemas:
+  - source: "./schema"
+    datasource:
+      postgresql:
+        database: "smartpoint-db-instance"
+        cloudSql:
+          instanceId: "smartpoint-21e6a-instance"
+          schemaValidation: "COMPATIBLE" # COMPATIBLE mode makes Postgres schema compatible with Data Connect.
+connectorDirs: ["./example"]

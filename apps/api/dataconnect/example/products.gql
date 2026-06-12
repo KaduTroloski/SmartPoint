@@ -1,0 +1,46 @@
+
+query ListarProdutos {
+  products { id name description price barcode }
+}
+
+query BuscarProdutoPorId($id: UUID!) {
+  product(id: $id) { id name description price barcode } 
+}
+
+mutation CriarProduto($nome: String!, $desc: String, $preco: Float!, $codigo: String) {
+  product_insert(data: { name: $nome, description: $desc, price: $preco, barcode: $codigo })
+}
+
+mutation AtualizarProduto($id: UUID!, $nome: String!, $preco: Float!) {
+  product_update(id: $id, data: { name: $nome, price: $preco })
+}
+
+mutation DeletarProduto($id: UUID!) {
+  product_delete(id: $id)
+}
+
+query ListarEstoque {
+  productStocks { 
+    id quantity modifiedAt 
+    productId { id name price barcode } 
+  }
+}
+
+query BuscarEstoquePorId($id: UUID!) {
+  productStock(id: $id) {  
+    id quantity modifiedAt 
+    productId { id name price barcode } 
+  }
+}
+
+mutation CriarEstoque($produtoId: UUID!, $qtd: Int!) {
+  productStock_insert(data: { productIdId: $produtoId, quantity: $qtd }) 
+}
+
+mutation AtualizarEstoque($id: UUID!, $qtd: Int!) {
+  productStock_update(id: $id, data: { quantity: $qtd })
+}
+
+mutation DeletarEstoque($id: UUID!) {
+  productStock_delete(id: $id)
+}
