@@ -21,6 +21,12 @@ jobs:
         working-directory: ./apps/api 
         run: npm install
 
+      - name: Criar arquivo .env de Produção
+        working-directory: ./apps/api
+
+        run: |
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
+
       - name: Fazer o Deploy para o Firebase
         uses: w9jds/firebase-action@master
         with:
