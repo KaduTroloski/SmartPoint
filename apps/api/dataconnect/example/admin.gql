@@ -1,0 +1,30 @@
+query ListarStaff {
+  staffs { id name email role passwordHash } 
+}
+
+query BuscarStaffPorId($id: UUID!) {
+  staff(id: $id) { id name email role passwordHash } 
+}
+
+mutation CriarStaff($nome: String!, $email: String!, $senha: String!, $cargo: String!) {
+  staff_insert(data: { name: $nome, email: $email, passwordHash: $senha, role: $cargo })
+}
+
+query BuscarStaffPorEmail($email: String!) {
+ staffs(where: { email: { eq: $email } }) {
+   id
+   name
+   email
+   passwordHash
+   role
+ }
+}
+
+
+mutation AtualizarStaff($id: UUID!, $nome: String!, $cargo: String!) {
+  staff_update(id: $id, data: { name: $nome, role: $cargo })
+}
+
+mutation DeletarStaff($id: UUID!) {
+  staff_delete(id: $id)
+}
