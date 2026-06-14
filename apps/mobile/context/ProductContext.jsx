@@ -2,52 +2,85 @@ import {
     createContext,
     useContext,
     useState,
+    useEffect
 } from 'react';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { mockedProducts } from '../mocks/products';
 
-const ProductContext =
-    createContext();
+const ProductContext = createContext();
 
-export function ProductProvider({
-    children,
-}) {
+const STORAGE_KEY = '@products';
 
-    const [products, setProducts] =
-        useState(mockedProducts);
+export function ProductProvider({ children }) {
 
-    const addProduct = (
-        product
-    ) => {
+    const [products, setProducts] = useState([]);
 
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        loadProducts();
+    }, []);
+
+     async function loadProducts() {
+        try {
+            const storedProducts =
+                await AsyncStorage.getItem(STORAGE_KEY);
+
+            if (storedProducts) {
+                setProducts(JSON.parse(storedProducts));
+
+            } else {
+                setProducts(mockedProducts);
+
+            }
+
+        } catch (error) {
+            console.error(
+                'Erro ao carregar produtos:',
+                error
+            );
+
+            setProducts(mockedProducts);
+
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    // Salva sempre que products mudar
+    useEffect(() => {
+        if (!loading) {
+            AsyncStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(products)
+            );
+        }
+
+    }, [products, loading]);
+
+    const addProduct = (product) => {
         setProducts((prev) => [
             ...prev,
             product,
         ]);
     };
 
-    const updateProduct = (
-        updatedProduct
-    ) => {
-
+    const updateProduct = (updatedProduct) => {
         setProducts((prev) =>
             prev.map((product) =>
-                product.id ===
-                updatedProduct.id
+                product.id === updatedProduct.id
                     ? updatedProduct
                     : product
             )
         );
     };
 
-    const deleteProduct = (
-        id
-    ) => {
-
+    const deleteProduct = (id) => {
         setProducts((prev) =>
             prev.filter(
-                (product) =>
-                    product.id !== id
+                (product) => product.id !== id
             )
         );
     };
@@ -56,6 +89,7 @@ export function ProductProvider({
         <ProductContext.Provider
             value={{
                 products,
+                loading,
                 addProduct,
                 updateProduct,
                 deleteProduct,
@@ -67,7 +101,11 @@ export function ProductProvider({
 }
 
 export function useProducts() {
-    return useContext(
-        ProductContext
-    );
+    const context = useContext(ProductContext);
+
+    if(!context) {
+        throw new Error('useProducts deve ser usado dentro de ProductProvider');
+    }
+
+    return context;
 }

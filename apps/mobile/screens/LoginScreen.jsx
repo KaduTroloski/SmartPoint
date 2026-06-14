@@ -83,18 +83,18 @@ export default function LoginScreen({ navigation }) {
         },
     });
 
-  // Para gerar o hash de teste no console e copiar para o mock (temporário)
-/*   useEffect(() => {
-    async function generateHash() {
-      try {
-        const hash = await hashPassword('Admin@123');
-        console.log('Use este hash no seu arquivo de mocks:', hash);
-      } catch (error) {
-        console.error('Erro ao gerar hash:', error);
-      }
-    }
-    generateHash();
-  }, []); */
+    // Para gerar o hash de teste no console e copiar para o mock (temporário)
+    /*   useEffect(() => {
+        async function generateHash() {
+          try {
+            const hash = await hashPassword('Admin@123');
+            console.log('Use este hash no seu arquivo de mocks:', hash);
+          } catch (error) {
+            console.error('Erro ao gerar hash:', error);
+          }
+        }
+        generateHash();
+      }, []); */
 
     return (
         <KeyboardAvoidingView
@@ -139,6 +139,10 @@ export default function LoginScreen({ navigation }) {
                                 <FormInput
                                     label="E-mail"
                                     icon="email-outline"
+                                    mode="outlined"
+                                    keyboardType="email-address"
+                                    autoCapitalize="none"
+                                    autoCorrect={false}
                                     value={value}
                                     onChangeText={onChange}
                                     error={!!errors.email}

@@ -10,6 +10,8 @@ import {
 import {
     Searchbar,
     FAB,
+    ActivityIndicator,
+    Text,
 } from 'react-native-paper';
 
 import ProductCard from '../components/ProductCard';
@@ -24,6 +26,7 @@ export default function ProductListScreen({ navigation }) {
 
     const {
         products,
+        loading,
         deleteProduct,
         addProduct,
         updateProduct,
@@ -73,6 +76,20 @@ export default function ProductListScreen({ navigation }) {
                 ]
             );
         };
+
+    if (loading) {
+        return (
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator
+                    size="large"
+                />
+
+                <Text>
+                    Carregando produtos...
+                </Text>
+            </View>
+        );
+    }
 
     return (
         <View style={styles.container}>
@@ -163,5 +180,11 @@ const styles = StyleSheet.create({
 
     search: {
         flex: 1,
+    },
+
+    loadingContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
