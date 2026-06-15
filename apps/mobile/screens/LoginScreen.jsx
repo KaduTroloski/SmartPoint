@@ -160,6 +160,7 @@ export default function LoginScreen({ navigation }) {
                             render={({ field: { onChange, value } }) => (
                                 <PasswordInput
                                     label="Senha"
+                                    autoCapitalize="none"
                                     value={value}
                                     onChangeText={onChange}
                                     error={!!errors.password}

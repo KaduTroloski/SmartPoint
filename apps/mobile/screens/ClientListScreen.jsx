@@ -14,50 +14,49 @@ import {
     Text,
 } from 'react-native-paper';
 
-import ProductCard from '../components/ProductCard';
+import ClientCard from '../components/ClientCard';
 
-import ProductFormModal from '../components/ProductFormModal';
+import ClientFormModal from '../components/ClientFormModal';
 
-import { useProducts } from '../context/ProductContext';
+import { useClients } from '../context/ClientContext';
 
 import uuid from 'react-native-uuid';
 
-export default function ProductListScreen({ navigation }) {
+export default function ClientListScreen({ navigation }) {
 
     const {
-        products,
+        clients,
         loading,
-        deleteProduct,
-        addProduct,
-        updateProduct,
-    } = useProducts();
+        deleteClient,
+        addClient,
+        updateClient,
+    } = useClients();
 
     const [search, setSearch] =
         useState('');
 
-    const [selectedProduct,
-        setSelectedProduct] =
+    const [selectedClient,
+        setSelectedClient] =
         useState(null);
 
     const [modalVisible,
         setModalVisible] =
         useState(false);
 
-    const filteredProducts =
-        products.filter((product) =>
-            product.name
-                .toLowerCase()
-                .includes(
-                    search.toLowerCase()
-                )
-        );
+    const filteredClients = clients.filter((client) =>
+        client.name
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        ||
+        client.cpf.includes(search)
+    );
 
     const handleDelete =
         (id) => {
 
             Alert.alert(
-                'Excluir Produto',
-                'Deseja realmente excluir este produto?',
+                'Excluir Cliente',
+                'Deseja realmente excluir este cliente?',
                 [
                     {
                         text: 'Cancelar',
@@ -71,7 +70,7 @@ export default function ProductListScreen({ navigation }) {
                             'destructive',
 
                         onPress: () =>
-                            deleteProduct(id),
+                            deleteClient(id),
                     },
                 ]
             );
@@ -85,7 +84,7 @@ export default function ProductListScreen({ navigation }) {
                 />
 
                 <Text>
-                    Carregando produtos...
+                    Carregando clientes...
                 </Text>
             </View>
         );
@@ -97,7 +96,7 @@ export default function ProductListScreen({ navigation }) {
             <View style={styles.searchRow}>
 
                 <Searchbar
-                    placeholder="Pesquisar produtos"
+                    placeholder="Pesquisar clientes"
                     value={search}
                     onChangeText={setSearch}
                     style={styles.search}
@@ -107,7 +106,7 @@ export default function ProductListScreen({ navigation }) {
                     icon="plus"
                     size="small"
                     onPress={() => {
-                        setSelectedProduct(null);
+                        setSelectedClient(null);
                         setModalVisible(true);
                     }}
                 />
@@ -115,16 +114,16 @@ export default function ProductListScreen({ navigation }) {
             </View>
 
             <FlatList
-                data={filteredProducts}
+                data={filteredClients}
                 keyExtractor={(item) =>
                     item.id.toString()
                 }
                 renderItem={({ item }) => (
-                    <ProductCard
-                        product={item}
-                        onEdit={(product) => {
-                            setSelectedProduct(
-                                product
+                    <ClientCard
+                        client={item}
+                        onEdit={(client) => {
+                            setSelectedClient(
+                                client
                             );
 
                             setModalVisible(
@@ -136,26 +135,23 @@ export default function ProductListScreen({ navigation }) {
                 )}
             />
 
-            <ProductFormModal
+            <ClientFormModal
                 onDismiss={() => {
-                    setSelectedProduct(null);
+                    setSelectedClient(null);
                     setModalVisible(false)
                 }}
                 visible={modalVisible}
-                product={selectedProduct}
+                client={selectedClient}
                 onSubmit={(data) => {
-                    if (selectedProduct) {
-                        updateProduct({
-                            ...selectedProduct,
+                    if (selectedClient) {
+                        updateClient({
+                            ...selectedClient,
                             ...data,
                         });
                     } else {
-
-                        addProduct({
+                        addClient({
                             id: uuid.v4(),
                             ...data,
-                            price: Number(data.price),
-                            stock: Number(data.stock),
                         });
                     }
                     setModalVisible(false);

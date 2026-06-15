@@ -10,7 +10,13 @@ export default function Home({ navigation }) {
                 style={styles.botao}
                 onPress={() => navigation.navigate('Controle de Produtos')}
             >
-                <Text style={styles.textoBotao}>Clique Aqui</Text>
+                <Text style={styles.textoBotao}>Controle de Produtos</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.botao}
+                onPress={() => navigation.navigate('Controle de Clientes')}
+            >
+                <Text style={styles.textoBotao}>Controle de Clientes</Text>
             </TouchableOpacity>
         </View>
     )

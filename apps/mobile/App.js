@@ -2,14 +2,17 @@ import Routes from "./navigation/Routes";
 import { AuthProvider } from "./context/AuthContext";
 import { PaperProvider } from "react-native-paper";
 import { ProductProvider } from "./context/ProductContext";
+import { ClientProvider } from "./context/ClientContext"
 
 export default function App() {
   return (
     <PaperProvider>
       <AuthProvider>
-        <ProductProvider>
-          <Routes />
-        </ProductProvider>
+        <ClientProvider>
+          <ProductProvider>
+            <Routes />
+          </ProductProvider>
+        </ClientProvider>
       </AuthProvider>
     </PaperProvider>
   );
