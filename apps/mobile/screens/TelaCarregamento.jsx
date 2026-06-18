@@ -1,7 +1,7 @@
 import React from 'react';
-import { 
-  StyleSheet, 
-  View, 
+import {
+  StyleSheet,
+  View,
   StatusBar,
   Platform // Adicionado para corrigir o erro no styles do brandTitle
 } from 'react-native';
@@ -14,14 +14,34 @@ export default function TelaCarregamento() {
       <View style={styles.container}>
         {/* Deixa a barra de status do celular combinando com o fundo azul */}
         <StatusBar barStyle="light-content" backgroundColor="#3b4cca" />
-        
+
         <View style={styles.contentContainer}>
-          {/* Ícone Redondo do Smart Point */}
+          {/* Ícone Redondo do Smart Point */} {/* iconDollar */}
           <View style={styles.iconCircle}>
             {/* Simulação do ícone de notas/moedas do design */}
-            <Text style={styles.iconDollar}>$</Text>
+            <Image
+              source={require('../assets/img/logo.png')}
+              style={styles.logo}
+            />
+
+            <Text
+              variant="headlineLarge"
+              style={[
+                styles.title,
+                { color: COLORS.primary },
+              ]}
+            >
+              Smart Point
+            </Text>
+
+            <Text
+              variant="bodyLarge"
+              style={styles.subtitle}
+            >
+              Sistema de Ponto de Vendas
+            </Text>
           </View>
-          
+
           {/* Textos Principais usando o Text do Paper */}
           <Text style={styles.brandTitle}>Smart Point</Text>
           <Text style={styles.brandSubtitle}>Sistema de Ponto de Vendas</Text>

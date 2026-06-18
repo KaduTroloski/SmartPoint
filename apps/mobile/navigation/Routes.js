@@ -12,13 +12,12 @@ import ProductListScreen from '../screens/ProductListScreen';
 import ClientListScreen from '../screens/ClientListScreen';
 
 // Imports do matheus
-import CarrinhoStack from '.'; // Ajuste o caminho se necessário (ex: ../navigation/CarrinhoStack)
+import CarrinhoStack from './CarrinhoStack'; // Ajuste o caminho se necessário (ex: ../navigation/CarrinhoStack)
 
 // Instâncias dos navegadores
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-// --- Telas Auxiliares do Drawer ---
 function PagamentoScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -39,6 +38,7 @@ function CustomDrawer({ navigation }) {
   const etapaAtual = 0;
   const etapas = ['Carrinho', 'Cliente', 'Pagamento', 'Finalização'];
 
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.closeButton} onPress={() => navigation.closeDrawer()}>
@@ -47,7 +47,7 @@ function CustomDrawer({ navigation }) {
 
       <View style={styles.logoArea}>
         <Image
-          source={require('../assets/images/logo-smartpoint.png')} // Ajustado o caminho relativo de assets
+          source={require('../assets/img/logo.png')}
           style={{ width: 75, height: 75, marginRight: 12, resizeMode: 'contain' }}
         />
         <View>
@@ -120,7 +120,7 @@ function MainDrawerNavigator() {
       />
       <Drawer.Screen
         name="Cliente"
-        component={ClienteScreen}
+        component={ClientListScreen}
         options={{
           headerRight: () => (
             <Text style={{ color: '#FFF', marginRight: 15 }}>Etapa 2 de 4</Text>
@@ -155,19 +155,19 @@ export default function Routes() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={LoginScreen} />
-        
+
         {/* A antiga 'Home' agora passa a ser o componente que carrega o Drawer inteiro */}
         <Stack.Screen name="Home" component={MainDrawerNavigator} />
-        
-        <Stack.Screen 
-          name="Controle de Produtos" 
-          component={ProductListScreen} 
-          options={{ headerShown: true }} 
+
+        <Stack.Screen
+          name="Controle de Produtos"
+          component={ProductListScreen}
+          options={{ headerShown: true }}
         />
-        <Stack.Screen 
-          name="Controle de Clientes" 
-          component={ClientListScreen} 
-          options={{ headerShown: true }} 
+        <Stack.Screen
+          name="Controle de Clientes"
+          component={ClientListScreen}
+          options={{ headerShown: true }}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
   separator: {
     height: 1,
     backgroundColor: '#6F73C9',
-    marginVertical: 20 
+    marginVertical: 20
   },
   cadastro: {
     flexDirection: 'row',
