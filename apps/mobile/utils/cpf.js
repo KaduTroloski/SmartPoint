@@ -1,0 +1,48 @@
+export function isValidCPF(cpf) {
+
+    // remove tudo que não for número
+    cpf = cpf.replace(/\D/g, '');
+
+    // deve ter 11 dígitos
+    if (cpf.length !== 11) {
+        return false;
+    }
+
+    // impede CPFs como 11111111111
+    if (/^(\d)\1+$/.test(cpf)) {
+        return false;
+    }
+
+    let sum = 0;
+
+    // valida primeiro dígito verificador
+    for (let i = 0; i < 9; i++) {
+        sum += Number(cpf[i]) * (10 - i);
+    }
+
+    let firstDigit = (sum * 10) % 11;
+
+    if (firstDigit === 10) {
+        firstDigit = 0;
+    }
+
+    if (firstDigit !== Number(cpf[9])) {
+        return false;
+    }
+
+
+    // valida segundo dígito verificador
+    sum = 0;
+
+    for (let i = 0; i < 10; i++) {
+        sum += Number(cpf[i]) * (11 - i);
+    }
+
+    let secondDigit = (sum * 10) % 11;
+
+    if (secondDigit === 10) {
+        secondDigit = 0;
+    }
+
+    return secondDigit === Number(cpf[10]);
+}
