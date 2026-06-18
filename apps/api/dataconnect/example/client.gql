@@ -1,0 +1,19 @@
+query ListarClientes {
+  customers { id name cpf telephone preferences } 
+}
+
+query BuscarClientePorId($id: UUID!) {
+  customer(id: $id) { id name cpf telephone preferences } 
+}
+
+mutation CriarCliente($nome: String!, $cpf: String, $telefone: String, $pref: String) {
+  customer_insert(data: { name: $nome, cpf: $cpf, telephone: $telefone, preferences: $pref })
+}
+
+mutation AtualizarCliente($id: UUID!, $nome: String!, $telefone: String, $pref: String) {
+  customer_update(id: $id, data: { name: $nome, telephone: $telefone, preferences: $pref })
+}
+
+mutation DeletarCliente($id: UUID!) {
+  customer_delete(id: $id)
+}

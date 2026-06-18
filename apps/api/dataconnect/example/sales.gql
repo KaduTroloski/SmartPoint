@@ -1,0 +1,93 @@
+
+query ListarTiposVenda { saleTypes { id typeName } }
+query BuscarTipoVendaPorId($id: UUID!) { saleType(id: $id) { id typeName } }
+mutation CriarTipoVenda($nome: String!) { saleType_insert(data: { typeName: $nome }) }
+mutation DeletarTipoVenda($id: UUID!) { saleType_delete(id: $id) }
+
+query ListarMetodosPagamento { paymentMethods { id methodName } }
+query BuscarMetodoPagamentoPorId($id: UUID!) { paymentMethod(id: $id) { id methodName } }
+mutation CriarMetodoPagamento($nome: String!) { paymentMethod_insert(data: { methodName: $nome }) }
+mutation DeletarMetodoPagamento($id: UUID!) { paymentMethod_delete(id: $id) }
+
+
+query ListarVendas {
+  sales {
+    id totalAmount discountAmount createdAt
+    staffId { id name role } 
+    customerId { id name cpf } 
+    saleTypeId { id typeName } 
+  }
+}
+
+query BuscarVendaPorId($id: UUID!) {
+  sale(id: $id) {
+    id totalAmount discountAmount createdAt
+    staffId { name role }
+    customerId { name cpf }
+    saleTypeId { typeName }
+  }
+}
+
+mutation CriarVenda($vendedorId: UUID!, $tipoId: UUID!, $clienteId: UUID, $total: Float!, $desconto: Float!) {
+  sale_insert(data: { 
+    staffIdId: $vendedorId, 
+    saleTypeIdId: $tipoId, 
+    customerIdId: $clienteId, 
+    totalAmount: $total, 
+    discountAmount: $desconto 
+  })
+}
+
+mutation AtualizarValoresVenda($id: UUID!, $total: Float!, $desconto: Float!) {
+  sale_update(id: $id, data: { totalAmount: $total, discountAmount: $desconto })
+}
+
+mutation DeletarVenda($id: UUID!) {
+  sale_delete(id: $id)
+}
+
+query ListarItensVenda {
+  saleItems {
+    id quantity unitPrice
+    productId { id name barcode } 
+    saleId { id createdAt } 
+  }
+}
+
+query BuscarItemVendaPorId($id: UUID!) {
+  saleItem(id: $id) {
+    id quantity unitPrice
+    productId { name barcode }
+  }
+}
+
+mutation CriarItemVenda($vendaId: UUID!, $produtoId: UUID!, $qtd: Int!, $preco: Float!) {
+  saleItem_insert(data: { saleIdId: $vendaId, productIdId: $produtoId, quantity: $qtd, unitPrice: $preco })
+}
+
+mutation DeletarItemVenda($id: UUID!) {
+  saleItem_delete(id: $id)
+}
+
+query ListarPagamentos {
+  salePayments {
+    id amountPaid
+    paymentMethodId { id methodName } 
+    saleId { id totalAmount } 
+  }
+}
+
+query BuscarPagamentoPorId($id: UUID!) {
+  salePayment(id: $id) {
+    id amountPaid
+    paymentMethodId { methodName }
+  }
+}
+
+mutation CriarPagamento($vendaId: UUID!, $metodoId: UUID!, $valor: Float!) {
+  salePayment_insert(data: { saleIdId: $vendaId, paymentMethodIdId: $metodoId, amountPaid: $valor })
+}
+
+mutation DeletarPagamento($id: UUID!) {
+  salePayment_delete(id: $id)
+}
