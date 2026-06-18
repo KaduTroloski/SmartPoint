@@ -1,83 +1,70 @@
-import React, {
-    createContext,
-    useContext,
-    useEffect,
-    useState,
-} from 'react';
-
+import { createContext, useState, useEffect, useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import api from '../services/api';
 
-const AuthContext = createContext();
+export const AuthContext = createContext({});
 
 export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    const [users, setUsers] = useState([]);
+  useEffect(() => {
+    async function loadStorageData() {
+      const storedToken = await AsyncStorage.getItem('@SmartPoint:token');
+      const storedUser = await AsyncStorage.getItem('@SmartPoint:user');
 
-    const registerUser = (userData) => {
+      if (storedToken && storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+      setLoading(false);
+    }
+    loadStorageData();
+  }, []);
 
-        const newUser = {
-            id: Date.now(),
-            ...userData,
-        };
+  async function signIn(email, password) {
+    try {
+      const emailTratado = email.trim();
+      const senhaTratada = password.trim();
 
-        setUsers((prev) => [...prev, newUser]);
 
-        useEffect(() => {
-            loadUsers();
-        }, []);
-    };
+      const response = await api.post('/auth/login', { 
+        email: emailTratado, 
+        senhaLimpa: senhaTratada 
+      });
+      
+      const { token, usuario } = response.data;
 
-    useEffect(() => {
-        saveUsers();
-    }, [users]);
+      await AsyncStorage.setItem('@SmartPoint:token', token);
+      await AsyncStorage.setItem('@SmartPoint:user', JSON.stringify(usuario));
 
-    const loadUsers = async () => {
+      setUser(usuario);
+      
+    } catch (error) {
+      console.error("Erro no login:", error);
+      throw new Error("E-mail ou senha incorretos.");
+    }
+  }
 
-        try {
+  function signOut() {
+    AsyncStorage.clear().then(() => {
+      setUser(null);
+    });
+  }
 
-            const storedUsers =
-                await AsyncStorage.getItem('@users');
-
-            if (storedUsers) {
-
-                setUsers(JSON.parse(storedUsers));
-
-                return;
-            }
-
-        } catch (error) {
-
-            console.log(error);
-        }
-    };
-
-    const saveUsers = async () => {
-
-        try {
-
-            await AsyncStorage.setItem(
-                '@users',
-                JSON.stringify(users)
-            );
-
-        } catch (error) {
-
-            console.log(error);
-        }
-    };
-
-    return (
-        <AuthContext.Provider
-            value={{
-                users,
-                registerUser,
-            }}
-        >
-            {children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={{ signed: !!user, user, loading, signIn, signOut }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
+// Criando o nosso próprio Hook para usar nas telas!
 export function useAuth() {
-    return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  
+  if (!context) {
+    throw new Error('useAuth deve ser usado dentro de um AuthProvider.');
+  }
+
+  return context;
 }

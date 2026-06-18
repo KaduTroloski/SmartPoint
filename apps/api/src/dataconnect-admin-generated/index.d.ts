@@ -529,111 +529,6 @@ export interface staff_Key {
   __typename?: 'staff_Key';
 }
 
-/** Generated Node Admin SDK operation action function for the 'ListarTiposVenda' Query. Allow users to execute without passing in DataConnect. */
-export function listarTiposVenda(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListarTiposVendaData>>;
-/** Generated Node Admin SDK operation action function for the 'ListarTiposVenda' Query. Allow users to pass in custom DataConnect instances. */
-export function listarTiposVenda(options?: OperationOptions): Promise<ExecuteOperationResponse<ListarTiposVendaData>>;
-
-/** Generated Node Admin SDK operation action function for the 'BuscarTipoVendaPorId' Query. Allow users to execute without passing in DataConnect. */
-export function buscarTipoVendaPorId(dc: DataConnect, vars: BuscarTipoVendaPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarTipoVendaPorIdData>>;
-/** Generated Node Admin SDK operation action function for the 'BuscarTipoVendaPorId' Query. Allow users to pass in custom DataConnect instances. */
-export function buscarTipoVendaPorId(vars: BuscarTipoVendaPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarTipoVendaPorIdData>>;
-
-/** Generated Node Admin SDK operation action function for the 'CriarTipoVenda' Mutation. Allow users to execute without passing in DataConnect. */
-export function criarTipoVenda(dc: DataConnect, vars: CriarTipoVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarTipoVendaData>>;
-/** Generated Node Admin SDK operation action function for the 'CriarTipoVenda' Mutation. Allow users to pass in custom DataConnect instances. */
-export function criarTipoVenda(vars: CriarTipoVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarTipoVendaData>>;
-
-/** Generated Node Admin SDK operation action function for the 'DeletarTipoVenda' Mutation. Allow users to execute without passing in DataConnect. */
-export function deletarTipoVenda(dc: DataConnect, vars: DeletarTipoVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarTipoVendaData>>;
-/** Generated Node Admin SDK operation action function for the 'DeletarTipoVenda' Mutation. Allow users to pass in custom DataConnect instances. */
-export function deletarTipoVenda(vars: DeletarTipoVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarTipoVendaData>>;
-
-/** Generated Node Admin SDK operation action function for the 'ListarMetodosPagamento' Query. Allow users to execute without passing in DataConnect. */
-export function listarMetodosPagamento(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListarMetodosPagamentoData>>;
-/** Generated Node Admin SDK operation action function for the 'ListarMetodosPagamento' Query. Allow users to pass in custom DataConnect instances. */
-export function listarMetodosPagamento(options?: OperationOptions): Promise<ExecuteOperationResponse<ListarMetodosPagamentoData>>;
-
-/** Generated Node Admin SDK operation action function for the 'BuscarMetodoPagamentoPorId' Query. Allow users to execute without passing in DataConnect. */
-export function buscarMetodoPagamentoPorId(dc: DataConnect, vars: BuscarMetodoPagamentoPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarMetodoPagamentoPorIdData>>;
-/** Generated Node Admin SDK operation action function for the 'BuscarMetodoPagamentoPorId' Query. Allow users to pass in custom DataConnect instances. */
-export function buscarMetodoPagamentoPorId(vars: BuscarMetodoPagamentoPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarMetodoPagamentoPorIdData>>;
-
-/** Generated Node Admin SDK operation action function for the 'CriarMetodoPagamento' Mutation. Allow users to execute without passing in DataConnect. */
-export function criarMetodoPagamento(dc: DataConnect, vars: CriarMetodoPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarMetodoPagamentoData>>;
-/** Generated Node Admin SDK operation action function for the 'CriarMetodoPagamento' Mutation. Allow users to pass in custom DataConnect instances. */
-export function criarMetodoPagamento(vars: CriarMetodoPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarMetodoPagamentoData>>;
-
-/** Generated Node Admin SDK operation action function for the 'DeletarMetodoPagamento' Mutation. Allow users to execute without passing in DataConnect. */
-export function deletarMetodoPagamento(dc: DataConnect, vars: DeletarMetodoPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarMetodoPagamentoData>>;
-/** Generated Node Admin SDK operation action function for the 'DeletarMetodoPagamento' Mutation. Allow users to pass in custom DataConnect instances. */
-export function deletarMetodoPagamento(vars: DeletarMetodoPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarMetodoPagamentoData>>;
-
-/** Generated Node Admin SDK operation action function for the 'ListarVendas' Query. Allow users to execute without passing in DataConnect. */
-export function listarVendas(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListarVendasData>>;
-/** Generated Node Admin SDK operation action function for the 'ListarVendas' Query. Allow users to pass in custom DataConnect instances. */
-export function listarVendas(options?: OperationOptions): Promise<ExecuteOperationResponse<ListarVendasData>>;
-
-/** Generated Node Admin SDK operation action function for the 'BuscarVendaPorId' Query. Allow users to execute without passing in DataConnect. */
-export function buscarVendaPorId(dc: DataConnect, vars: BuscarVendaPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarVendaPorIdData>>;
-/** Generated Node Admin SDK operation action function for the 'BuscarVendaPorId' Query. Allow users to pass in custom DataConnect instances. */
-export function buscarVendaPorId(vars: BuscarVendaPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarVendaPorIdData>>;
-
-/** Generated Node Admin SDK operation action function for the 'CriarVenda' Mutation. Allow users to execute without passing in DataConnect. */
-export function criarVenda(dc: DataConnect, vars: CriarVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarVendaData>>;
-/** Generated Node Admin SDK operation action function for the 'CriarVenda' Mutation. Allow users to pass in custom DataConnect instances. */
-export function criarVenda(vars: CriarVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarVendaData>>;
-
-/** Generated Node Admin SDK operation action function for the 'AtualizarValoresVenda' Mutation. Allow users to execute without passing in DataConnect. */
-export function atualizarValoresVenda(dc: DataConnect, vars: AtualizarValoresVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<AtualizarValoresVendaData>>;
-/** Generated Node Admin SDK operation action function for the 'AtualizarValoresVenda' Mutation. Allow users to pass in custom DataConnect instances. */
-export function atualizarValoresVenda(vars: AtualizarValoresVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<AtualizarValoresVendaData>>;
-
-/** Generated Node Admin SDK operation action function for the 'DeletarVenda' Mutation. Allow users to execute without passing in DataConnect. */
-export function deletarVenda(dc: DataConnect, vars: DeletarVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarVendaData>>;
-/** Generated Node Admin SDK operation action function for the 'DeletarVenda' Mutation. Allow users to pass in custom DataConnect instances. */
-export function deletarVenda(vars: DeletarVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarVendaData>>;
-
-/** Generated Node Admin SDK operation action function for the 'ListarItensVenda' Query. Allow users to execute without passing in DataConnect. */
-export function listarItensVenda(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListarItensVendaData>>;
-/** Generated Node Admin SDK operation action function for the 'ListarItensVenda' Query. Allow users to pass in custom DataConnect instances. */
-export function listarItensVenda(options?: OperationOptions): Promise<ExecuteOperationResponse<ListarItensVendaData>>;
-
-/** Generated Node Admin SDK operation action function for the 'BuscarItemVendaPorId' Query. Allow users to execute without passing in DataConnect. */
-export function buscarItemVendaPorId(dc: DataConnect, vars: BuscarItemVendaPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarItemVendaPorIdData>>;
-/** Generated Node Admin SDK operation action function for the 'BuscarItemVendaPorId' Query. Allow users to pass in custom DataConnect instances. */
-export function buscarItemVendaPorId(vars: BuscarItemVendaPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarItemVendaPorIdData>>;
-
-/** Generated Node Admin SDK operation action function for the 'CriarItemVenda' Mutation. Allow users to execute without passing in DataConnect. */
-export function criarItemVenda(dc: DataConnect, vars: CriarItemVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarItemVendaData>>;
-/** Generated Node Admin SDK operation action function for the 'CriarItemVenda' Mutation. Allow users to pass in custom DataConnect instances. */
-export function criarItemVenda(vars: CriarItemVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarItemVendaData>>;
-
-/** Generated Node Admin SDK operation action function for the 'DeletarItemVenda' Mutation. Allow users to execute without passing in DataConnect. */
-export function deletarItemVenda(dc: DataConnect, vars: DeletarItemVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarItemVendaData>>;
-/** Generated Node Admin SDK operation action function for the 'DeletarItemVenda' Mutation. Allow users to pass in custom DataConnect instances. */
-export function deletarItemVenda(vars: DeletarItemVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarItemVendaData>>;
-
-/** Generated Node Admin SDK operation action function for the 'ListarPagamentos' Query. Allow users to execute without passing in DataConnect. */
-export function listarPagamentos(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListarPagamentosData>>;
-/** Generated Node Admin SDK operation action function for the 'ListarPagamentos' Query. Allow users to pass in custom DataConnect instances. */
-export function listarPagamentos(options?: OperationOptions): Promise<ExecuteOperationResponse<ListarPagamentosData>>;
-
-/** Generated Node Admin SDK operation action function for the 'BuscarPagamentoPorId' Query. Allow users to execute without passing in DataConnect. */
-export function buscarPagamentoPorId(dc: DataConnect, vars: BuscarPagamentoPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarPagamentoPorIdData>>;
-/** Generated Node Admin SDK operation action function for the 'BuscarPagamentoPorId' Query. Allow users to pass in custom DataConnect instances. */
-export function buscarPagamentoPorId(vars: BuscarPagamentoPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarPagamentoPorIdData>>;
-
-/** Generated Node Admin SDK operation action function for the 'CriarPagamento' Mutation. Allow users to execute without passing in DataConnect. */
-export function criarPagamento(dc: DataConnect, vars: CriarPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarPagamentoData>>;
-/** Generated Node Admin SDK operation action function for the 'CriarPagamento' Mutation. Allow users to pass in custom DataConnect instances. */
-export function criarPagamento(vars: CriarPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarPagamentoData>>;
-
-/** Generated Node Admin SDK operation action function for the 'DeletarPagamento' Mutation. Allow users to execute without passing in DataConnect. */
-export function deletarPagamento(dc: DataConnect, vars: DeletarPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarPagamentoData>>;
-/** Generated Node Admin SDK operation action function for the 'DeletarPagamento' Mutation. Allow users to pass in custom DataConnect instances. */
-export function deletarPagamento(vars: DeletarPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarPagamentoData>>;
-
 /** Generated Node Admin SDK operation action function for the 'ListarStaff' Query. Allow users to execute without passing in DataConnect. */
 export function listarStaff(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListarStaffData>>;
 /** Generated Node Admin SDK operation action function for the 'ListarStaff' Query. Allow users to pass in custom DataConnect instances. */
@@ -738,4 +633,109 @@ export function atualizarEstoque(vars: AtualizarEstoqueVariables, options?: Oper
 export function deletarEstoque(dc: DataConnect, vars: DeletarEstoqueVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarEstoqueData>>;
 /** Generated Node Admin SDK operation action function for the 'DeletarEstoque' Mutation. Allow users to pass in custom DataConnect instances. */
 export function deletarEstoque(vars: DeletarEstoqueVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarEstoqueData>>;
+
+/** Generated Node Admin SDK operation action function for the 'ListarTiposVenda' Query. Allow users to execute without passing in DataConnect. */
+export function listarTiposVenda(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListarTiposVendaData>>;
+/** Generated Node Admin SDK operation action function for the 'ListarTiposVenda' Query. Allow users to pass in custom DataConnect instances. */
+export function listarTiposVenda(options?: OperationOptions): Promise<ExecuteOperationResponse<ListarTiposVendaData>>;
+
+/** Generated Node Admin SDK operation action function for the 'BuscarTipoVendaPorId' Query. Allow users to execute without passing in DataConnect. */
+export function buscarTipoVendaPorId(dc: DataConnect, vars: BuscarTipoVendaPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarTipoVendaPorIdData>>;
+/** Generated Node Admin SDK operation action function for the 'BuscarTipoVendaPorId' Query. Allow users to pass in custom DataConnect instances. */
+export function buscarTipoVendaPorId(vars: BuscarTipoVendaPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarTipoVendaPorIdData>>;
+
+/** Generated Node Admin SDK operation action function for the 'CriarTipoVenda' Mutation. Allow users to execute without passing in DataConnect. */
+export function criarTipoVenda(dc: DataConnect, vars: CriarTipoVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarTipoVendaData>>;
+/** Generated Node Admin SDK operation action function for the 'CriarTipoVenda' Mutation. Allow users to pass in custom DataConnect instances. */
+export function criarTipoVenda(vars: CriarTipoVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarTipoVendaData>>;
+
+/** Generated Node Admin SDK operation action function for the 'DeletarTipoVenda' Mutation. Allow users to execute without passing in DataConnect. */
+export function deletarTipoVenda(dc: DataConnect, vars: DeletarTipoVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarTipoVendaData>>;
+/** Generated Node Admin SDK operation action function for the 'DeletarTipoVenda' Mutation. Allow users to pass in custom DataConnect instances. */
+export function deletarTipoVenda(vars: DeletarTipoVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarTipoVendaData>>;
+
+/** Generated Node Admin SDK operation action function for the 'ListarMetodosPagamento' Query. Allow users to execute without passing in DataConnect. */
+export function listarMetodosPagamento(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListarMetodosPagamentoData>>;
+/** Generated Node Admin SDK operation action function for the 'ListarMetodosPagamento' Query. Allow users to pass in custom DataConnect instances. */
+export function listarMetodosPagamento(options?: OperationOptions): Promise<ExecuteOperationResponse<ListarMetodosPagamentoData>>;
+
+/** Generated Node Admin SDK operation action function for the 'BuscarMetodoPagamentoPorId' Query. Allow users to execute without passing in DataConnect. */
+export function buscarMetodoPagamentoPorId(dc: DataConnect, vars: BuscarMetodoPagamentoPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarMetodoPagamentoPorIdData>>;
+/** Generated Node Admin SDK operation action function for the 'BuscarMetodoPagamentoPorId' Query. Allow users to pass in custom DataConnect instances. */
+export function buscarMetodoPagamentoPorId(vars: BuscarMetodoPagamentoPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarMetodoPagamentoPorIdData>>;
+
+/** Generated Node Admin SDK operation action function for the 'CriarMetodoPagamento' Mutation. Allow users to execute without passing in DataConnect. */
+export function criarMetodoPagamento(dc: DataConnect, vars: CriarMetodoPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarMetodoPagamentoData>>;
+/** Generated Node Admin SDK operation action function for the 'CriarMetodoPagamento' Mutation. Allow users to pass in custom DataConnect instances. */
+export function criarMetodoPagamento(vars: CriarMetodoPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarMetodoPagamentoData>>;
+
+/** Generated Node Admin SDK operation action function for the 'DeletarMetodoPagamento' Mutation. Allow users to execute without passing in DataConnect. */
+export function deletarMetodoPagamento(dc: DataConnect, vars: DeletarMetodoPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarMetodoPagamentoData>>;
+/** Generated Node Admin SDK operation action function for the 'DeletarMetodoPagamento' Mutation. Allow users to pass in custom DataConnect instances. */
+export function deletarMetodoPagamento(vars: DeletarMetodoPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarMetodoPagamentoData>>;
+
+/** Generated Node Admin SDK operation action function for the 'ListarVendas' Query. Allow users to execute without passing in DataConnect. */
+export function listarVendas(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListarVendasData>>;
+/** Generated Node Admin SDK operation action function for the 'ListarVendas' Query. Allow users to pass in custom DataConnect instances. */
+export function listarVendas(options?: OperationOptions): Promise<ExecuteOperationResponse<ListarVendasData>>;
+
+/** Generated Node Admin SDK operation action function for the 'BuscarVendaPorId' Query. Allow users to execute without passing in DataConnect. */
+export function buscarVendaPorId(dc: DataConnect, vars: BuscarVendaPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarVendaPorIdData>>;
+/** Generated Node Admin SDK operation action function for the 'BuscarVendaPorId' Query. Allow users to pass in custom DataConnect instances. */
+export function buscarVendaPorId(vars: BuscarVendaPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarVendaPorIdData>>;
+
+/** Generated Node Admin SDK operation action function for the 'CriarVenda' Mutation. Allow users to execute without passing in DataConnect. */
+export function criarVenda(dc: DataConnect, vars: CriarVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarVendaData>>;
+/** Generated Node Admin SDK operation action function for the 'CriarVenda' Mutation. Allow users to pass in custom DataConnect instances. */
+export function criarVenda(vars: CriarVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarVendaData>>;
+
+/** Generated Node Admin SDK operation action function for the 'AtualizarValoresVenda' Mutation. Allow users to execute without passing in DataConnect. */
+export function atualizarValoresVenda(dc: DataConnect, vars: AtualizarValoresVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<AtualizarValoresVendaData>>;
+/** Generated Node Admin SDK operation action function for the 'AtualizarValoresVenda' Mutation. Allow users to pass in custom DataConnect instances. */
+export function atualizarValoresVenda(vars: AtualizarValoresVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<AtualizarValoresVendaData>>;
+
+/** Generated Node Admin SDK operation action function for the 'DeletarVenda' Mutation. Allow users to execute without passing in DataConnect. */
+export function deletarVenda(dc: DataConnect, vars: DeletarVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarVendaData>>;
+/** Generated Node Admin SDK operation action function for the 'DeletarVenda' Mutation. Allow users to pass in custom DataConnect instances. */
+export function deletarVenda(vars: DeletarVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarVendaData>>;
+
+/** Generated Node Admin SDK operation action function for the 'ListarItensVenda' Query. Allow users to execute without passing in DataConnect. */
+export function listarItensVenda(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListarItensVendaData>>;
+/** Generated Node Admin SDK operation action function for the 'ListarItensVenda' Query. Allow users to pass in custom DataConnect instances. */
+export function listarItensVenda(options?: OperationOptions): Promise<ExecuteOperationResponse<ListarItensVendaData>>;
+
+/** Generated Node Admin SDK operation action function for the 'BuscarItemVendaPorId' Query. Allow users to execute without passing in DataConnect. */
+export function buscarItemVendaPorId(dc: DataConnect, vars: BuscarItemVendaPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarItemVendaPorIdData>>;
+/** Generated Node Admin SDK operation action function for the 'BuscarItemVendaPorId' Query. Allow users to pass in custom DataConnect instances. */
+export function buscarItemVendaPorId(vars: BuscarItemVendaPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarItemVendaPorIdData>>;
+
+/** Generated Node Admin SDK operation action function for the 'CriarItemVenda' Mutation. Allow users to execute without passing in DataConnect. */
+export function criarItemVenda(dc: DataConnect, vars: CriarItemVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarItemVendaData>>;
+/** Generated Node Admin SDK operation action function for the 'CriarItemVenda' Mutation. Allow users to pass in custom DataConnect instances. */
+export function criarItemVenda(vars: CriarItemVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarItemVendaData>>;
+
+/** Generated Node Admin SDK operation action function for the 'DeletarItemVenda' Mutation. Allow users to execute without passing in DataConnect. */
+export function deletarItemVenda(dc: DataConnect, vars: DeletarItemVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarItemVendaData>>;
+/** Generated Node Admin SDK operation action function for the 'DeletarItemVenda' Mutation. Allow users to pass in custom DataConnect instances. */
+export function deletarItemVenda(vars: DeletarItemVendaVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarItemVendaData>>;
+
+/** Generated Node Admin SDK operation action function for the 'ListarPagamentos' Query. Allow users to execute without passing in DataConnect. */
+export function listarPagamentos(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListarPagamentosData>>;
+/** Generated Node Admin SDK operation action function for the 'ListarPagamentos' Query. Allow users to pass in custom DataConnect instances. */
+export function listarPagamentos(options?: OperationOptions): Promise<ExecuteOperationResponse<ListarPagamentosData>>;
+
+/** Generated Node Admin SDK operation action function for the 'BuscarPagamentoPorId' Query. Allow users to execute without passing in DataConnect. */
+export function buscarPagamentoPorId(dc: DataConnect, vars: BuscarPagamentoPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarPagamentoPorIdData>>;
+/** Generated Node Admin SDK operation action function for the 'BuscarPagamentoPorId' Query. Allow users to pass in custom DataConnect instances. */
+export function buscarPagamentoPorId(vars: BuscarPagamentoPorIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<BuscarPagamentoPorIdData>>;
+
+/** Generated Node Admin SDK operation action function for the 'CriarPagamento' Mutation. Allow users to execute without passing in DataConnect. */
+export function criarPagamento(dc: DataConnect, vars: CriarPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarPagamentoData>>;
+/** Generated Node Admin SDK operation action function for the 'CriarPagamento' Mutation. Allow users to pass in custom DataConnect instances. */
+export function criarPagamento(vars: CriarPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CriarPagamentoData>>;
+
+/** Generated Node Admin SDK operation action function for the 'DeletarPagamento' Mutation. Allow users to execute without passing in DataConnect. */
+export function deletarPagamento(dc: DataConnect, vars: DeletarPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarPagamentoData>>;
+/** Generated Node Admin SDK operation action function for the 'DeletarPagamento' Mutation. Allow users to pass in custom DataConnect instances. */
+export function deletarPagamento(vars: DeletarPagamentoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeletarPagamentoData>>;
 

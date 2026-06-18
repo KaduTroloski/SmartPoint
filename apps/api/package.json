@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/server.js",
   "engines": {
-    "node": "22" 
+    "node": "22"
   },
   "type": "module",
   "scripts": {
@@ -20,9 +20,10 @@
     "@dataconnect/admin-generated": "file:src/dataconnect-admin-generated",
     "bcrypt": "^6.0.0",
     "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "firebase-admin": "^13.10.0",
     "firebase-functions": "^7.2.5",
     "jsonwebtoken": "^9.0.3",
-    "express": "^5.2.1"
+    "ngrok": "^5.0.0-beta.2"
   }
 }

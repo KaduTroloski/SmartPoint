@@ -10,21 +10,16 @@ import LoginScreen from '../screens/LoginScreen';
 import DebugScreen from '../screens/DebugScreen';
 import ProductListScreen from '../screens/ProductListScreen';
 import ClientListScreen from '../screens/ClientListScreen';
+import PaymentScreen from '../screens/paymentScreen'; 
 
 // Imports do matheus
-import CarrinhoStack from './CarrinhoStack'; // Ajuste o caminho se necessário (ex: ../navigation/CarrinhoStack)
+import CarrinhoStack from './CarrinhoStack';
 
 // Instâncias dos navegadores
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-function PagamentoScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Pagamento</Text>
-    </View>
-  );
-}
+// 👇 Removi a PagamentoScreen falsa que estava aqui!
 
 function FinalizacaoScreen() {
   return (
@@ -37,7 +32,6 @@ function FinalizacaoScreen() {
 function CustomDrawer({ navigation }) {
   const etapaAtual = 0;
   const etapas = ['Carrinho', 'Cliente', 'Pagamento', 'Finalização'];
-
 
   return (
     <View style={styles.container}>
@@ -127,15 +121,16 @@ function MainDrawerNavigator() {
           ),
         }}
       />
+      
+      {/* 👇 AQUI ESTÁ A MÁGICA: O nome bate com o botão e o componente é o verdadeiro! */}
       <Drawer.Screen
-        name="Pagamento"
-        component={PagamentoScreen}
+        name="Payment"
+        component={PaymentScreen}
         options={{
-          headerRight: () => (
-            <Text style={{ color: '#FFF', marginRight: 15 }}>Etapa 3 de 4</Text>
-          ),
+          headerShown: false, // Desliga o cabeçalho padrão pois a sua tela já tem um lindo!
         }}
       />
+      
       <Drawer.Screen
         name="Finalização"
         component={FinalizacaoScreen}
@@ -156,7 +151,6 @@ export default function Routes() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={LoginScreen} />
 
-        {/* A antiga 'Home' agora passa a ser o componente que carrega o Drawer inteiro */}
         <Stack.Screen name="Home" component={MainDrawerNavigator} />
 
         <Stack.Screen
@@ -174,116 +168,27 @@ export default function Routes() {
   );
 }
 
-// --- Estilos do seu CustomDrawer ---
+// --- Estilos ---
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#3C40B8',
-    paddingTop: 20,
-    paddingHorizontal: 22
-  },
-  closeButton: {
-    width: 55,
-    height: 55,
-    borderWidth: 2,
-    borderColor: '#FFF',
-    borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  closeText: {
-    color: '#FFF',
-    fontSize: 24
-  },
-  logoArea: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 15,
-    marginBottom: 35
-  },
-  title: {
-    color: '#FFF',
-    fontSize: 22,
-    fontWeight: 'bold'
-  },
-  subtitle: {
-    color: '#FFF',
-    fontSize: 16
-  },
-  sectionTitle: {
-    color: '#AEB3E5',
-    fontSize: 15,
-    marginBottom: 20
-  },
-  item: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 14,
-    borderRadius: 10,
-    marginBottom: 18
-  },
-  itemActive: {
-    backgroundColor: '#00C92C'
-  },
-  circle: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: '#5056CC',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 12
-  },
-  circleActive: {
-    backgroundColor: '#45D95A'
-  },
-  circleText: {
-    color: '#FFF',
-    fontWeight: 'bold'
-  },
-  itemText: {
-    color: '#FFF',
-    fontSize: 18,
-    fontWeight: 'bold'
-  },
-  itemDisabled: {
-    color: '#6F73C9'
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#6F73C9',
-    marginVertical: 20
-  },
-  cadastro: {
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  plus: {
-    color: '#FFF',
-    fontSize: 30,
-    marginRight: 15
-  },
-  cadastroText: {
-    color: '#FFF',
-    fontSize: 18,
-    fontWeight: 'bold'
-  },
-  logout: {
-    backgroundColor: '#00C92C',
-    borderRadius: 10,
-    padding: 18,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 25
-  },
-  logoutIcon: {
-    color: '#FFF',
-    fontSize: 24,
-    marginRight: 15
-  },
-  logoutText: {
-    color: '#FFF',
-    fontSize: 18,
-    fontWeight: 'bold'
-  },
+  container: { flex: 1, backgroundColor: '#3C40B8', paddingTop: 20, paddingHorizontal: 22 },
+  closeButton: { width: 55, height: 55, borderWidth: 2, borderColor: '#FFF', borderRadius: 30, justifyContent: 'center', alignItems: 'center' },
+  closeText: { color: '#FFF', fontSize: 24 },
+  logoArea: { flexDirection: 'row', alignItems: 'center', marginTop: 15, marginBottom: 35 },
+  title: { color: '#FFF', fontSize: 22, fontWeight: 'bold' },
+  subtitle: { color: '#FFF', fontSize: 16 },
+  sectionTitle: { color: '#AEB3E5', fontSize: 15, marginBottom: 20 },
+  item: { flexDirection: 'row', alignItems: 'center', padding: 14, borderRadius: 10, marginBottom: 18 },
+  itemActive: { backgroundColor: '#00C92C' },
+  circle: { width: 36, height: 36, borderRadius: 18, backgroundColor: '#5056CC', justifyContent: 'center', alignItems: 'center', marginRight: 12 },
+  circleActive: { backgroundColor: '#45D95A' },
+  circleText: { color: '#FFF', fontWeight: 'bold' },
+  itemText: { color: '#FFF', fontSize: 18, fontWeight: 'bold' },
+  itemDisabled: { color: '#6F73C9' },
+  separator: { height: 1, backgroundColor: '#6F73C9', marginVertical: 20 },
+  cadastro: { flexDirection: 'row', alignItems: 'center' },
+  plus: { color: '#FFF', fontSize: 30, marginRight: 15 },
+  cadastroText: { color: '#FFF', fontSize: 18, fontWeight: 'bold' },
+  logout: { backgroundColor: '#00C92C', borderRadius: 10, padding: 18, flexDirection: 'row', alignItems: 'center', marginBottom: 25 },
+  logoutIcon: { color: '#FFF', fontSize: 24, marginRight: 15 },
+  logoutText: { color: '#FFF', fontSize: 18, fontWeight: 'bold' },
 });
